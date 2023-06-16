@@ -52,7 +52,8 @@ function createTable(){
     let hours=date.getHours()
     let minutes=date.getMinutes()
     let seconds = date.getSeconds()
-    let arrivalTimeinMinutes=(hours*60)+minutes+(seconds/60)
+    let secondsinMinutes=seconds/60
+    let arrivalTimeinMinutes=(hours*60)+minutes+(Math.floor(secondsinMinutes))
     cell5.innerHTML = date.toUTCString();
     
         
@@ -83,9 +84,10 @@ function createTable(){
         let currenthours=currrentTime.getHours()
         let currentminutes=currrentTime.getMinutes()
         let currentSeconds=currrentTime.getSeconds()
-    let currrentTimeinMinutes = (currenthours*60)+currentminutes+((currentSeconds)/60)
+        let currentSecondsinMinutes=(currentSeconds)/60
+    let currrentTimeinMinutes = (currenthours*60)+currentminutes+(Math.floor(currentSecondsinMinutes))
     let minutesLapsed=currrentTimeinMinutes- arrivalTimeinMinutes
-              let totaldue = minutesLapsed*1
+              let totaldue = Math.floor(minutesLapsed)*1
     
     Rcell0.innerHTML = names.value;
     Rcell1.innerHTML = phone.value;
