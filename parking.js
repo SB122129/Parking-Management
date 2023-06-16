@@ -85,7 +85,7 @@ function createTable(){
         let currentSeconds=currrentTime.getSeconds()
     let currrentTimeinMinutes = (currenthours*60)+currentminutes+((currentSeconds)/60)
     let minutesLapsed=currrentTimeinMinutes- arrivalTimeinMinutes
-              let totaldue = minutesLapsed*10
+              let totaldue = minutesLapsed*1
     
     Rcell0.innerHTML = names.value;
     Rcell1.innerHTML = phone.value;
