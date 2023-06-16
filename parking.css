@@ -35,6 +35,15 @@ form{
     color: yellow;
     border-color: yellow;
 }
+#parkingHead{
+    color: yellow;
+    font-size: 35px;
+    text-align: center;
+    border-style:solid ;
+    border-color: yellow;
+    border-radius: 10px;
+    padding: 20px;
+}
 #receiptHead{
     color: black;
     font-size: 35px;
@@ -47,14 +56,10 @@ form{
     background-color: yellow;
 
 }
-#parkingHead{
+#receiptDescription{
     color: yellow;
-    font-size: 35px;
-    text-align: center;
-    border-style:solid ;
-    border-color: yellow;
-    border-radius: 10px;
-    padding: 20px;
+    font-size: 11px;
+
 }
 
 
