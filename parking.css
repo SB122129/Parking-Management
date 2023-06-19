@@ -2,13 +2,19 @@ body{
     background-color: rgb(0, 0, 0);
 }
 ::-webkit-scrollbar {
-    width: 5px;
-    background-color: yellow;
+    width: 7px;
+    background-color: #E4A11B;
 }
-
+.navbar{
+    background-color: #E4A11B;
+}
 #nav-link{
-    font-size: 65px;
+    font-size: 35px;
     font-weight: 550;
+    background-color: #E4A11B;
+}
+.lni-car{
+    font-size: 45px;
 }
 form{
     width: 13rem;
@@ -24,9 +30,7 @@ form{
     background-color: black;
     color: yellow;
 }
-.lni-car{
-    font-size: 80px;
-}
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
