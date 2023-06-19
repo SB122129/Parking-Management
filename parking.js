@@ -1,6 +1,9 @@
 
-    let button= document.getElementById('btn1')
-    button.addEventListener('click', createTable)
+    let button= document.getElementById('btn1')//an object to access the 'Register' button in the HTML form
+    
+    button.addEventListener('click', createTable)//an event listener that makes the 'Register' button excute the createTable() function defined below when clicked upon once
+
+    
 
     let names = document.getElementById('name');
      let plate = document.getElementById('plate');
@@ -15,16 +18,28 @@
      let ModalHeader=document.getElementById("modalHeader")
      let Modaltitle=document.getElementById("receiptModalLabel")
      const myModal = document.getElementById('receiptModal')
-     
-     let print=document.createElement('input');
+     // above is the list objects we created to access various HTML elements located in HTML part of the code i.e. index.html 
+
+     let print=document.createElement('input');//a button located in a modal for downloading receipt of the car that is ready to check out
      print.type = "button"; 
      print.id="downloadBtn"
      print.value = "DOWNLOAD";
      print.style = " background: yellow; border: 0; font-size: 14px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 1rem; text-align: center;color:black;border-radius:7px;"
 
 
-let counter = 0;
+//function to cleat all form input values once all the details of the car have beeen submiited 
+function clear(){
+  names.value=``
+  plate.value=``
+  model.value=``
+  phone.value='+251'
+
+
+}
+let counter = 0;//to count the number of cars inserted inside the parking table
+
 function createTable(){
+  //validation to make sure all inputs submitted are not empty 
   let na = document.getElementById('name').value;
   if (na == "") {
     nameErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> Name must be filled out`
@@ -35,6 +50,7 @@ function createTable(){
   if (na != "") {
     nameErrors.innerHTML= ``
   }
+  
   let pho = document.getElementById('phone').value;
   if (pho == "") {
     phoneErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> Phone Number must be filled out`
@@ -44,6 +60,7 @@ function createTable(){
   if (pho != "") {
     phoneErrors.innerHTML= ``
   }
+  
   let pla = document.getElementById('plate').value;
   if (pla == "") {
     plateErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> License plate must be filled out`
@@ -63,46 +80,70 @@ function createTable(){
     modelErrors.innerHTML= ``
   }
   
-  
-    let table = document.getElementById("parkingtable");
-    let row = table.insertRow();
-    let innerRow = document.getElementById('parkingtable').rows.length;
-    row.id=innerRow
    
-    let cell0 = row.insertCell(0)
-    let cell1 = row.insertCell(1);
-    let cell2 = row.insertCell(2);
-    let cell3 = row.insertCell(3);
-    let cell4 = row.insertCell(4);
-    let cell5 = row.insertCell(5);
-    let cell6 = row.insertCell(6);
-    counter++;
-    cell0.innerHTML = counter;
-    cell1.innerHTML = names.value;
-    cell2.innerHTML = phone.value;
-    cell3.innerHTML = plate.value;
-    cell4.innerHTML = model.value;
-    let date = new Date()
+let table = document.getElementById("parkingtable"); //object to access the parking table body
+//the parking table stores all the info the cars that are currently parked
+
+let row = table.insertRow(); //object to used add rows to the parking table body
+
+let innerRow = document.getElementById('parkingtable').rows.length;
+//The rows property of a table returns an array of all the tr elements in the table, so the length property of the array will return the number of rows in the table.
+row.id=innerRow
+//below is group of objects used to insert individua; cells into the row we created above   
+let cell0 = row.insertCell(0)
+let cell1 = row.insertCell(1);
+let cell2 = row.insertCell(2);
+let cell3 = row.insertCell(3);
+let cell4 = row.insertCell(4);
+let cell5 = row.insertCell(5);
+let cell6 = row.insertCell(6);
+counter++;//to increment the id no value by one each time a row is added
+
+//below we have assigned each input value to its corresponding cell in the table
+cell0.innerHTML = counter;
+cell1.innerHTML = names.value;
+cell2.innerHTML = phone.value;
+cell3.innerHTML = plate.value;
+cell4.innerHTML = model.value;
+
+clear()//we called the clear function defined above here beacuse we have already assigned each input value to its corresponding cell in the table
+
+    let date = new Date() // new Date() is a builtin JS date object  that automatically gets the current date and time
+    
+    cell5.innerHTML = date.toUTCString();//toUTCString()  automatically converts the ouput of new Date() into UTC string format
+
+
+    //below we use a group of objects to access each individual hour,minutes and seconds 
     let hours=date.getHours()
     let minutes=date.getMinutes()
     let seconds = date.getSeconds()
-    let secondsinMinutes=seconds/60
-    let arrivalTimeinMinutes=(hours*60)+minutes+(Math.floor(secondsinMinutes))
-    cell5.innerHTML = date.toUTCString();
+    let secondsinMinutes=seconds/60 //to converts the seconds we got above into minutes
+    let arrivalTimeinMinutes=(hours*60)+minutes+(Math.floor(secondsinMinutes)) 
+    //to convert the exact time the new Date() object returns into minutes 
+    //and we used the maths.floor built in method to round the result we got downwards 
+    
     
         
 
-    let remover=document.createElement('input');
+    let remover=document.createElement('input'); //to a create a button that removes the row it resides in
           remover.type = "button"; 
           remover.id="removebtn"
           remover.value = "REMOVE";
           remover.style = " background: red; border: 0; font-size: 12px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .9rem;padding-right: .9rem; text-align: center;color:black;border-radius:7px;"
-          cell6.appendChild(remover); 
-
+          //code above assign varies attributes to the new button we created
           
-            
+          cell6.appendChild(remover); //to append it to the Action column in parking table
+
+     //a function that is called by an onclick event that removes a row using innerRow(id we assigned to each row above) and calls createReceiptTable() function    
+            remover.onclick =function removeRow(){
+            const element = document.getElementById(innerRow);
+            element.remove(innerRow);
+            createReceiptTable();
+          }
+          
+    //once a row has been removed from the parking table that row is moved to the receipt table , this transfer is done using createReceiptTable()
           function createReceiptTable(){        
-    let Rtable = document.getElementById("receipttable");
+    let Rtable = document.getElementById("receipttable");//receipttable stores all the info of the cars that are ready to check out
     let rowr = Rtable.insertRow();
     
     let innerRowr = document.getElementById('receipttable').rows.length;
@@ -121,25 +162,33 @@ function createTable(){
         let currentSeconds=currrentTime.getSeconds()
         let currentSecondsinMinutes=(currentSeconds)/60
     let currrentTimeinMinutes = (currenthours*60)+currentminutes+(Math.floor(currentSecondsinMinutes))
-    let minutesLapsed=currrentTimeinMinutes- arrivalTimeinMinutes
-              let totaldue = Math.floor(minutesLapsed)*1
+    //all the steps above are exactly the same to the ones we used to create the body of the parking table, but this time we did it for the receipt table
     
-    Rcell0.innerHTML = names.value;
-    Rcell1.innerHTML = phone.value;
-    Rcell2.innerHTML = plate.value;
-    Rcell3.innerHTML = model.value;
+    let minutesLapsed=currrentTimeinMinutes- arrivalTimeinMinutes
+    //currentTimeinminutes stores the exact time the a row is removed from the parking table
+    //arrivalTimeminutes stores the exact time the a row is inserted into the parking table 
+    //subtracting the two we can get the amount of time a car is parked
+    
+    let totaldue = Math.floor(minutesLapsed)*1 //we multiply the total amount of minutes the car has been in the parking table with the rate which in this case is 1
+
+    //below we have assigned each parking table  value to its corresponding cell in the  receipt table 
+    //and also added the new values we calculated above (minutesLapsed and totaldue)
+    Rcell0.innerHTML = cell1.innerHTML;
+    Rcell1.innerHTML = cell2.innerHTML;
+    Rcell2.innerHTML = cell3.innerHTML;
+    Rcell3.innerHTML = cell4.innerHTML;
     Rcell4.innerHTML = minutesLapsed
     Rcell5.innerHTML = totaldue
-    let view =document.createElement('input');
+    let view =document.createElement('input');//a button that opens a modal which contains the final details of the parked car that is ready to checkout 
           view.type = "button"; 
           view.id="downloadBtn"
           view.value = "VIEW";
           view.style = " background: yellow; border: 0; font-size: 12px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .8rem;padding-right: .8rem; text-align: center;color:black;border-radius:9px;margin-right:.2rem;"
           Rcell6.appendChild(view)
           view.setAttribute("data-bs-toggle", "modal");
-          view.setAttribute("data-bs-target", "#receiptModal");
+          view.setAttribute("data-bs-target", "#receiptModal");//the button when clicked opens the modal  using this attribute
     
-    let removerR=document.createElement('input');
+    let removerR=document.createElement('input');//a button  to remove the row it resides in 
           removerR.type = "button"; 
           removerR.id="removebtn"
           removerR.value = "REMOVE";
@@ -148,26 +197,29 @@ function createTable(){
           removerR.onclick = function removeRows(){
             const element = document.getElementById(innerRowr);
             element.remove(innerRowr);
-          }
+          }// a function that is called by an onclick event that removes a row using innerRow(id we assigned to each row above) but this time in the receipt table
     
 
-          ModalFooter.appendChild(print)
-          Modaltitle.innerHTML=``
-          let receiptDateandTime= new Date()
-          let receiptDate=receiptDateandTime.getDate()+"/"+receiptDateandTime.getMonth()+"/"+ receiptDateandTime.getFullYear()
+          ModalFooter.appendChild(print)//appends the print button we created a the top of the code to the modal that is opened by the view button
+          // NOTE: when the print button definition was located inside he createreceipttable() function it  kept being created multiple times in the modal footer everytime the createreceipttable() was called 
+          // to fix this we defined it above outside this function
+        
+          let receiptDateandTime= new Date()//to get the date of parking receipt being issued
+      let receiptDate=receiptDateandTime.getDate()+"/"+receiptDateandTime.getMonth()+"/"+ receiptDateandTime.getFullYear()//to convert the the date of parking receipt being issued into dd/mm/yyyy format
+          
 
   ModalBody.innerHTML=`
-  <center><h3> Parking Details </h3></center>
+  <center><h3><i class="fa fa-info-circle" aria-hidden="true"></i> Parking Details </h3></center>
   <br><br>
   <p style="text-align:right;position:relative;">Date: ${receiptDate}<p>
   <br>
-  <p><i class="bi bi-person"></i> Name : &ensp;${names.value}</p>
-  <p><i class="bi bi-telephone-forward"></i> Phone	: &ensp;${phone.value}</p>
-  <p><i class="fa fa-list-alt" aria-hidden="true"></i> Plate	:  &ensp;${plate.value}<p>
-  <p><i class="lni lni-car-alt"></i> Model	:  ${model.value}</p> 
+  <p><i class="bi bi-person"></i> Name : &ensp;${Rcell0.innerHTML}</p>
+  <p><i class="bi bi-telephone-forward"></i> Phone	: &ensp;${Rcell1.innerHTML}</p>
+  <p><i class="fa fa-list-alt" aria-hidden="true"></i> Plate	:  &ensp;${Rcell2.innerHTML}<p>
+  <p><i class="lni lni-car-alt"></i> Model	:  ${Rcell3.innerHTML}</p> 
   <p><i class="bi bi-clock"></i> Time Elasped In Minutes :  &ensp;${minutesLapsed}</p>	
   <p><i class="bi bi-cash"></i> Total Due In Birr :  &ensp;${totaldue}</p>
-`
+`// above is code to fill all the modal body that pops out with all necessary info of the parking receipt
 
 ModalHeader.style=`
 background-color:black;
@@ -187,11 +239,10 @@ ModalFooter.style=`
 background-color:black;
 color:yellow;
 border-color: black;
-`
+`//to style elements of the modal
 
-
- 
-          print.onclick = function myfunc(){
+          //a user defined function that uses html2canvas to print all the contents of an HTML element once the id of the element is passed to it
+            print.onclick = function myfunc(){
             // if you are using a different 'id' in the div, make sure you replace it here.
             
             html2canvas(ModalBody).then(function(canvas) {
@@ -201,17 +252,8 @@ border-color: black;
             });
         };
 
-        
-
-      
       }
-  
-      remover.onclick =function removeRow(){
-        const element = document.getElementById(innerRow);
-        element.remove(innerRow);
-        createReceiptTable();
-    } 
-    } 
+  } 
         
     
             

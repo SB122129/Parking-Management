@@ -19,12 +19,10 @@
 
 
 <body>
-  
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg"> <!-- navbar used as heading -->
     <div class="container-fluid">
       <a class="navbar-brand" href="#" id="nav-link"><i class="lni lni-car"></i>&ensp;Parking Management</a>
     </div>
-    
   </nav>
 
   <div class = "container mt-5">
@@ -34,17 +32,16 @@
                 <div class="mb-3">
                   <label for="name" class="form-label" ><i class="bi bi-person"></i>&ensp;Fullname</label>
                   <input type="text"  class="form-control" id="name">
-                  <div ><p id="nameError"></p></div>
-                  
+                  <div><p id="nameError"></p></div>
                 </div>
                 <div class="mb-3">
                   <label for="phone" class="form-label"><i class="bi bi-phone"></i>&ensp;Phone Number</label>
-                  <input type="tel"  class="form-control" id="phone">
+                  <input type="tel"  class="form-control" id="phone" value="+251">
                   <div ><p id="phoneError"></p></div>
                 </div>
                 <div class="mb-3">
-                  <label for="plate" class="form-label"><i class="fa fa-list-alt" aria-hidden="true"></i>&ensp;Plate</label>
-                  <input type="text"   class="form-control" id="plate">
+                  <label for="plate" class="form-label"><i class="fa fa-list-alt" aria-hidden="true"></i>&ensp;License Plate</label>
+                  <input type="text"   class="form-control" id="plate" placeholder="e.g.  2-A-44565">
                   <div ><p id="plateError"></p></div>
                 </div>
                 <div class="mb-3">
@@ -52,70 +49,70 @@
                     <input type="text"   class="form-control" id="model">
                     <div ><p id="modelError"></p></div>
                 </div>
-
                 <button type="button" id="btn1"   class="btn btn-warning">Register</button>
               </form>
-    
-
-        </div>
-        <div class="appendclass col-lg-9 col-sm-12 ">
-          <table class="table table-borderless mt-5">
-            
-            <thead>
-              <p id="parkingHead"><i class="fa fa-product-hunt" aria-hidden="true"></i>&ensp;Parking  Table</p>
-              <tr>
-                <th scope="col">ID No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Plate</th>                
-                <th scope="col">Model</th>
-                <th scope="col">Arrival Time</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody id="parkingtable">
-            </tbody>
-          </table>
-          <table class="table table-borderless mt-5">
-            <thead>
-              <p id="receiptHead"><i class="bi bi-receipt"></i>&ensp;Receipt Table</p>
-              <p id="receiptDescription">Rate - 1 birr per minute</p>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Plate</th>
-                <th scope="col">Model</th>
-                <th scope="col">Time Elasped</th>
-                <th scope="col">Total Due</th>
-                <th scope="col" >Actions</th>
-              </tr>
-            </thead>
-           
-            <tbody id="receipttable">
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="container-fluid">
-        <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header" id="modalHeader">
-                <h1 class="modal-title fs-5 text-center" id="receiptModalLabel"></h1>
-              </div>
-              <div class="modal-body" id="modalBody">
             </div>
-            <div class="modal-footer" id="modalFooter">
-              <button type="button" class="btn" id="closeBtn" data-bs-dismiss="modal">CLOSE</button>
+            <div class="appendclass col-lg-9 col-sm-12 ">
+              <!-- table for storing parking info when the car is parked -->
+              <table class="table table-borderless mt-5">
+                <thead>
+                  <p id="parkingHead"><i class="fa fa-product-hunt" aria-hidden="true"></i>&ensp;Parking  Table</p>
+                  <tr>
+                    <th scope="col">ID No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Plate</th>                
+                    <th scope="col">Model</th>
+                    <th scope="col">Arrival Time</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="parkingtable">
+
+                </tbody>
+                <!-- table for storing parking info when the car is ready to check out -->
+              </table> 
+              <table class="table table-borderless mt-5">
+                <thead>
+                  <p id="receiptHead"><i class="bi bi-receipt"></i>&ensp;Receipt Table</p>
+                  <p id="receiptDescription">Rate - 1 birr per minute</p>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Plate</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Time Elasped</th>
+                    <th scope="col">Total Due</th>
+                    <th scope="col" >Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="receipttable">
+
+                </tbody>
+              </table>
             </div>
           </div>
-        </div>
+           <!-- Modal for printing receipt on exit from parking lot -->
+          <div class="container-fluid">
+            <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" id="modalHeader">
+                    <h1 class="modal-title fs-5 text-center" id="receiptModalLabel"></h1>
+                  </div>
+                  <div class="modal-body" id="modalBody">
 
-      </div>
-      <br><br><br>
-      <hr style="color: yellow;"> 
-      <p  id="footer">Made by ©SB</p>
-    </div>
+                  </div>
+                  <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn" id="closeBtn" data-bs-dismiss="modal">CLOSE</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br><br>
+            <hr style="color: yellow;"> 
+            <p  id="footer">Made by ©SB</p>
+          </div>
 
 
 

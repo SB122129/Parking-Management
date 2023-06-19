@@ -19,6 +19,12 @@ body{
 form{
     width: 13rem;
 }
+@media screen (1 > x) and (494 < y) {
+    form {
+      width: 20rem
+      text-align:center
+    }
+}
 .form-label{
     color: yellow;
 }
