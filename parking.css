@@ -1,17 +1,22 @@
 body{
     background-color: rgb(0, 0, 0);
 }
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: yellow;
+}
+
 #nav-link{
     font-size: 65px;
     font-weight: 550;
 }
 form{
-    width: 10rem;
+    width: 13rem;
 }
 .form-label{
     color: yellow;
 }
-.form-control {
+.form-control:focus, .form-control {
     padding:5px; 
     border:2px solid yellow; 
     -webkit-border-radius: 1px;
@@ -22,6 +27,21 @@ form{
 .lni-car{
     font-size: 80px;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+-webkit-box-shadow: 0 0 0 30px rgb(3, 3, 3) inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: yellow !important;
+    }
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      } 
+
 
 #parkingtable{
     color: yellow;
@@ -62,7 +82,12 @@ form{
 
 }
 
-
+#closeBtn{
+    color:black;
+    background: red;
+    font-weight: 600;
+    font-size: 14px;
+}
 #footer{
     color: yellow;
     text-align: center;
