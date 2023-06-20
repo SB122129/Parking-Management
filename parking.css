@@ -3,21 +3,21 @@ body{
 }
 ::-webkit-scrollbar {
     width: 7px;
-    background-color: #E4A11B;
+    background-color: yellow;
 }
 .navbar{
-    background-color: #E4A11B;
+    background-color: yellow;
 }
 #nav-link{
     font-size: 35px;
     font-weight: 550;
-    background-color: #E4A11B;
+    background-color: yellow;
 }
 .lni-car{
     font-size: 45px;
 }
 form{
-    width: 13rem;
+    width: 18rem;
 }
 @media screen (1 > x) and (494 < y) {
     form {
@@ -56,27 +56,38 @@ input:-webkit-autofill {
 #parkingtable{
     color: yellow;
     border-color: yellow;
+    font-size: 13px;
+    width: 14rem;
+}
+th{
+    font-size: 15px;
+    width: 30rem;
+
 }
 #receipttable{
     color: yellow;
+    width: 30rem;
+    font-size: 13px;
     
 }
 .table{
     color: yellow;
     border-color: yellow;
+    width: 30rem;
 }
 #parkingHead{
     color: yellow;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     border-style:solid ;
     border-color: yellow;
     border-radius: 10px;
     padding: 20px;
+    width: 30rem;
 }
 #receiptHead{
     color: black;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     margin-top: 5rem;
     border-style:solid ;
@@ -84,6 +95,7 @@ input:-webkit-autofill {
     border-radius: 10px;
     padding: 20px;
     background-color: yellow;
+    width: 30rem;
 
 }
 #receiptDescription{
