@@ -4,4 +4,4 @@ to check out it transfers all its info to a receipt table and calculates the tot
 in the receipt table, there is a view button that opens a modal with all the necessary info about the cars stay in the parking lot, and provides
 a download option which clicked downloads a .png format of the modal this is done using html2canvas
 
-HTML, CSS, BOOTSTRAP, JAVASCRIPT AND HTML2CANVAS were used to make this  
+HTML, CSS, BOOTSTRAP, JAVASCRIPT and HTML2CANVAS were used to make this  
