@@ -17,7 +17,8 @@ body{
     font-size: 45px;
 }
 form{
-    width: 18rem;
+    width: 17rem;
+    margin-right: 100px;
 }
 @media screen (1 > x) and (494 < y) {
     form {
@@ -103,12 +104,16 @@ th{
     font-size: 11px;
 
 }
+.modal-dialog, .modal-content{
+    width: 22rem;
+    background-color: black;
+}
 
 #closeBtn{
     color:black;
     background: red;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
 }
 #footer{
     color: yellow;

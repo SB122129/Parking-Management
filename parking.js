@@ -5,7 +5,7 @@
      * in the receipt table there is a view button that opens a modal with all the neccessary info of the cars stay in the parking lot, and provides
      * a download option which onclicked downloads a .png format of the modal
      */
-    
+
     let button= document.getElementById('btn1');//an object to access the 'Register' button in the HTML form
     
     button.addEventListener('click', createTable);//an event listener that makes the 'Register' button excute the createTable() function defined below when clicked upon once
@@ -31,7 +31,7 @@
      print.type = "button"; 
      print.id="downloadBtn"
      print.value = "DOWNLOAD";
-     print.style = " background: yellow; border: 0; font-size: 14px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 1rem; text-align: center;color:black;border-radius:7px;";
+     print.style = " background: yellow; border: 0; font-size: 11px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 1rem; text-align: center;color:black;border-radius:7px;";
 
 
     //function to clear all form input values once all the details of the car have beeen submiited 
@@ -142,7 +142,7 @@
           remover.type = "button"; 
           remover.id="removebtn"
           remover.value = "REMOVE";
-          remover.style = " background: red; border: 0; font-size: 12px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .9rem;padding-right: .9rem; text-align: center;color:black;border-radius:7px;";
+          remover.style = " background: red; border: 0; font-size: 11px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .9rem;padding-right: .9rem; text-align: center;color:black;border-radius:7px;";
           //code above assign varies attributes to the new button we created
         cell6.appendChild(remover); //to append it to the Action column in parking table
 
@@ -195,7 +195,7 @@
           view.type = "button"; 
           view.id="downloadBtn"
           view.value = "VIEW";
-          view.style = " background: yellow; border: 0; font-size: 12px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .8rem;padding-right: .8rem; text-align: center;color:black;border-radius:9px;margin-right:.2rem;";
+          view.style = " background: yellow; border: 0; font-size: 11px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .8rem;padding-right: .8rem; text-align: center;color:black;border-radius:7px;margin-right:.2rem;";
           Rcell6.appendChild(view);
           view.setAttribute("data-bs-toggle", "modal");
           view.setAttribute("data-bs-target", "#receiptModal");//the button when clicked opens the modal  using this attribute
@@ -204,7 +204,7 @@
           removerR.type = "button"; 
           removerR.id="removebtn";
           removerR.value = "REMOVE";
-          removerR.style = " background: red; border: 0; font-size: 12px; font-weight: 600;padding-left: .9rem;padding-right: .9rem; line-height: 2.5;  outline: transparent; padding: 0 .3rem; text-align: center;color:black;border-radius:7px;";
+          removerR.style = " background: red; border: 0; font-size: 11px; font-weight: 600;padding-left: .9rem;padding-right: .9rem; line-height: 2.5;  outline: transparent; padding: 0 .3rem; text-align: center;color:black;border-radius:7px;margin-top:0.3em;";
           Rcell6.appendChild(removerR);
           removerR.onclick = function removeRows(){
             const element = document.getElementById(innerRowr);
@@ -221,7 +221,7 @@
           
           ModalBody.innerHTML=`
           <center><h3><i class="fa fa-info-circle" aria-hidden="true"></i> Parking Details </h3></center>
-          <br><br>
+          <br>
           <p style="text-align:right;position:relative;">Date: ${receiptDate}<p>
           <br>
           <p><i class="bi bi-person"></i> Name : &ensp;${Rcell0.innerHTML}</p>
@@ -230,28 +230,35 @@
           <p><i class="lni lni-car-alt"></i> Model	:  ${Rcell3.innerHTML}</p> 
           <p><i class="bi bi-clock"></i> Time Elasped In Minutes :  &ensp;${minutesLapsed}</p>	
           <p><i class="bi bi-cash"></i> Total Due In Birr :  &ensp;${totaldue}</p>
+          <br>
+          <center><p><i class="bi bi-emoji-smile"></i> Thank you, come again</p></center>
           `;// above is code to fill all the modal body that pops out with all necessary info of the parking receipt
+          
           
           ModalHeader.style=`
           background-color:black;
           color:yellow;
           border-color: black;
+          width: 22rem;
           `;
           ModalBody.style=`
           background-color:black;
           color:yellow;
           border-color: black;
+          width: 22rem;
           `;
           Modaltitle.style=`
           background-color:black;
           color:yellow;
           text-align:center;
           border-color: black;
+          width: 22rem;
           `;
           ModalFooter.style=`
           background-color:black;
           color:yellow;
           border-color: black;
+          width: 22rem;
           `;//to style elements of the modal
           
           //a user defined function that uses html2canvas to print all the contents of an HTML element once the id of the element is passed to it
