@@ -18,19 +18,6 @@ body{
     font-size: 35px;
     color: yellow;
 }
-svg {
-    width: 57px;
-    height: 57px;
-    fill: yellow;
-  }
-  svg:hover {
-    fill: red;
-  }
-  
-.fa-car{
-    font-size: 90px;
-
-}
 form{
     width: 17rem;
 }
