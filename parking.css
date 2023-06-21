@@ -9,18 +9,30 @@ body{
     background-color: rgb(0, 0, 0);
 }
 #nav-link{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 550;
     background-color: rgb(0, 0, 0);
     color: yellow;
 }
 .lni-car{
-    font-size: 45px;
+    font-size: 35px;
     color: yellow;
+}
+svg {
+    width: 57px;
+    height: 57px;
+    fill: yellow;
+  }
+  svg:hover {
+    fill: red;
+  }
+  
+.fa-car{
+    font-size: 90px;
+
 }
 form{
     width: 17rem;
-    margin-right: 100px;
 }
 @media screen (1 > x) and (494 < y) {
     form {
@@ -65,6 +77,7 @@ input:-webkit-autofill {
 th{
     font-size: 15px;
     width: 30rem;
+    font-weight: 500;
 
 }
 #receipttable{
