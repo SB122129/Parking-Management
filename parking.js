@@ -71,6 +71,11 @@
       plateErrors.style=`color: red;font-size: 11px;margin-top:0.3em`;
       return;
     }
+    if (/\s/.test(pla)) {//to make sure the plate number inserted doesn't have spaces
+      plateErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> No spaces allowed`;
+      plateErrors.style=`color: red;font-size: 11px;margin-top:0.3em`;
+      return;
+  }
     if (pla != "") {
       plateErrors.innerHTML= ``;
     }
@@ -123,7 +128,7 @@
       }
     }
     
-    clear();
+    //clear();
 
     let date = new Date(); // new Date() is a builtin JS date object  that automatically gets the current date and time
     cell5.innerHTML = date.toUTCString();//toUTCString()  automatically converts the ouput of new Date() into UTC string format
@@ -156,8 +161,7 @@
         function createReceiptTable(){        
           let Rtable = document.getElementById("receipttable");//receipttable stores all the info of the cars that are ready to check out
           let rowr = Rtable.insertRow();
-          let innerRowr = document.getElementById('receipttable').rows.length;
-          rowr.id=innerRowr;
+          rowr.id='receiptTableRow';//assign id to rows in thr table
           
           let Rcell0 = rowr.insertCell(0);
           let Rcell1 = rowr.insertCell(1);
@@ -182,7 +186,7 @@
           let totaldue = Math.floor(minutesLapsed)*1; //I multiply the total amount of minutes the car has been in the parking table with the rate which in this case is 1
 
           //below I have assigned each parking table  value to its corresponding cell in the  receipt table 
-          //and also added the new values I calculated above (minutesLapsed and totaldue)
+          //and also added the new values calculated above (minutesLapsed and totaldue)
   
           Rcell0.innerHTML = cell1.innerHTML;
           Rcell1.innerHTML = cell2.innerHTML;
@@ -202,14 +206,24 @@
           
           let removerR=document.createElement('input');//a button  to remove the row it resides in 
           removerR.type = "button"; 
-          removerR.id="removebtn";
+          removerR.id="removebtn2";
           removerR.value = "REMOVE";
           removerR.style = " background: red; border: 0; font-size: 11px; font-weight: 600;padding-left: .9rem;padding-right: .9rem; line-height: 2.5;  outline: transparent; padding: 0 .3rem; text-align: center;color:black;border-radius:7px;margin-top:0.3em;";
-          Rcell6.appendChild(removerR);
-          removerR.onclick = function removeRows(){
-            const element = document.getElementById(innerRowr);
-            element.remove(innerRowr);
-          }// a function that is called by an onclick event that removes a row using innerRow(id we assigned to each row above) but this time in the receipt table
+          Rcell6.appendChild(removerR); 
+          function removeRows(){
+            for (var i = 0; i < plateArray.length; i++) {
+              //this for loop checks deletes the previously registered plate value from plateArray 
+              //this is needed because after checking out, in order for the same car to check back in its registered liscense plate must be removed
+              if (plateArray[i]==plate.value) {
+                delete plateArray[i];
+              }
+            }
+            const elements = document.getElementById('receiptTableRow');
+            elements.remove('receiptTableRow');
+            return
+          }
+          removerR.addEventListener('click', removeRows);
+          // an event that removes a row using id (id we assigned to each row above) but this time in the receipt table
     
 
           ModalFooter.appendChild(print);//appends the print button we created a the top of the code to the modal that is opened by the view button
