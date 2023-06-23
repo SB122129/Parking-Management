@@ -1,7 +1,7 @@
     /** Author: Samson Berhanu
-     * email: sa,iberhanu12@gmail.com
-     * a simple parking system that stores all the neccsary info of parked cars in a parking table and when a car ready
-     * to check out it trnasfers all its info to a receipt table and calculates the total amount its due based on its time of arrival 
+     * Email: samiberhanu12@gmail.com
+     * A simple parking system that stores all the neccsary info of parked cars in a parking table and when a car ready
+     * to check out it trnasfers all its info into a receipt table and calculates the total amount its due based on its time of arrival 
      * in the receipt table there is a view button that opens a modal with all the neccessary info of the cars stay in the parking lot, and provides
      * a download option which onclicked downloads a .png format of the modal
      */
@@ -61,6 +61,11 @@
       phoneErrors.style=`color: red;font-size: 11px;margin-top:0.3em`;
       return;
   }
+  if (pho.length !=10) {
+    phoneErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> Phone Number must be 10 digits`;
+    phoneErrors.style=`color: red;font-size: 11px;margin-top:0.3em`;
+    return;
+}
     if (pho != "") {
       phoneErrors.innerHTML= ``;
   }
@@ -82,7 +87,7 @@
   
     let mod = document.getElementById('model').value;
     if (mod == "") {
-      modelErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> Car Mode; plate must be filled out`;
+      modelErrors.innerHTML=`<i class="bi bi-exclamation-circle"></i> Car Model must be filled out`;
       modelErrors.style=`color: red;font-size: 11px;margin-top:0.3em`;
       return;
     }
@@ -128,7 +133,7 @@
       }
     }
     
-    //clear();
+    clear();//Clears the form input boxes after successfull submission
 
     let date = new Date(); // new Date() is a builtin JS date object  that automatically gets the current date and time
     cell5.innerHTML = date.toUTCString();//toUTCString()  automatically converts the ouput of new Date() into UTC string format
@@ -199,7 +204,7 @@
           view.type = "button"; 
           view.id="downloadBtn"
           view.value = "VIEW";
-          view.style = " background: yellow; border: 0; font-size: 11px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .8rem;padding-right: .8rem; text-align: center;color:black;border-radius:7px;margin-right:.2rem;";
+          view.style = " background: royalblue; border: 0; font-size: 11px; font-weight: 600; line-height: 2.5;  outline: transparent; padding: 0 .3rem;padding-left: .8rem;padding-right: .8rem; text-align: center;color:black;border-radius:7px;margin-right:.2rem;";
           Rcell6.appendChild(view);
           view.setAttribute("data-bs-toggle", "modal");
           view.setAttribute("data-bs-target", "#receiptModal");//the button when clicked opens the modal  using this attribute
