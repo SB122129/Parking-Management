@@ -1,119 +1,186 @@
-body{
+/* Base Styles */
+body {
     background-color: rgb(0, 0, 0);
 }
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 7px;
     background-color: yellow;
 }
-.navbar{
+
+/* Navbar Styling */
+.navbar {
     background-color: rgb(0, 0, 0);
 }
-#nav-link{
+
+#nav-link {
     font-size: 25px;
     font-weight: 550;
     background-color: rgb(0, 0, 0);
     color: yellow;
 }
-.lni-car{
+
+/* Icon Styling */
+.lni-car {
     font-size: 35px;
     color: yellow;
 }
-form{
+
+/* Form Styling */
+form {
     width: 17rem;
 }
 
-.form-label{
+.form-label {
     color: yellow;
 }
-.form-control:focus, .form-control {
-    padding:5px; 
-    border:2px solid yellow; 
-    -webkit-border-radius: 1px;
+
+.form-control,
+.form-control:focus {
+    padding: 5px; 
+    border: 2px solid yellow; 
     border-radius: 5px;
     background-color: black;
     color: yellow;
 }
 
-
+/* Autofill Styling */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
--webkit-box-shadow: 0 0 0 30px rgb(3, 3, 3) inset !important;
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgb(3, 3, 3) inset !important;
 }
 
 input:-webkit-autofill {
     -webkit-text-fill-color: yellow !important;
-    }
-    input[type=number]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      } 
+}
 
-/* css above for styling form input when its in diiferent states*/
-#parkingtable{
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Table Styling */
+#parkingtable {
     color: yellow;
     border-color: yellow;
     font-size: 13px;
     width: 14rem;
 }
-th{
+
+th {
     font-size: 15px;
     width: 30rem;
     font-weight: 500;
-
 }
-#receipttable{
+
+#receipttable {
     color: yellow;
     width: 30rem;
     font-size: 13px;
-    
 }
-.table{
+
+.table {
     color: yellow;
     border-color: yellow;
     width: 30rem;
 }
-#parkingHead{
+
+/* Headers for Tables */
+#parkingHead {
     color: yellow;
     font-size: 25px;
     text-align: center;
-    border-style:solid ;
-    border-color: yellow;
+    border: solid 1px yellow;
     border-radius: 10px;
     padding: 20px;
     width: 30rem;
 }
-#receiptHead{
+
+#receiptHead {
     color: black;
     font-size: 25px;
     text-align: center;
     margin-top: 5rem;
-    border-style:solid ;
-    border-color: yellow;
+    border: solid 1px yellow;
     border-radius: 10px;
     padding: 20px;
     background-color: yellow;
     width: 30rem;
-
 }
-#receiptDescription{
+
+#receiptDescription {
     color: yellow;
     font-size: 11px;
-
 }
-.modal-dialog, .modal-content{
+
+/* Modal Styling */
+.modal-dialog,
+.modal-content {
     width: 22rem;
     background-color: black;
 }
 
-#closeBtn{
-    color:black;
+#closeBtn {
+    color: black;
     background: red;
     font-weight: 600;
     font-size: 12px;
 }
-#footer{
+
+#footer {
     color: yellow;
     text-align: center;
     font-size: 15px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    /* Make form full width on small screens */
+    form {
+        width: 100%;
+    }
+    
+    /* Tables and headers should use full available width */
+    #parkingtable,
+    #receipttable,
+    .table,
+    #parkingHead,
+    #receiptHead {
+        width: 100%;
+        font-size: 90%;
+    }
+    
+    /* Table header columns should auto-size */
+    th {
+        width: auto;
+    }
+    
+    /* Modal content responsive adjustments */
+    .modal-dialog,
+    .modal-content {
+        width: 90%;
+    }
+    
+    /* Adjust navbar link font size if needed */
+    #nav-link {
+        font-size: 20px;
+    }
+}
+
+/* Additional adjustments if needed for extra small devices */
+@media only screen and (max-width: 480px) {
+    #nav-link {
+        font-size: 18px;
+    }
+    
+    .form-control,
+    .form-control:focus {
+        font-size: 14px;
+    }
+    
+    th, #parkingHead, #receiptHead {
+        font-size: 14px;
+    }
 }
